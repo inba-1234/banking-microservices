@@ -11,8 +11,18 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  server:
-    port: 8081
+
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: classpath:ssl/account-service.p12
+    key-store-password: changeit
+    key-store-type: PKCS12
+    trust-store: classpath:ssl/account-truststore.p12
+    trust-store-password: changeit
+    trust-store-type: PKCS12
+    client-auth: need
 
 logging:
   level:

@@ -2,12 +2,13 @@ package com.banking.transaction.client;
 
 import com.banking.transaction.dto.CreditRequestDTO;
 import com.banking.transaction.dto.DebitRequestDTO;
+import com.banking.transaction.config.FeignSslConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "account-service", url = "http://localhost:8080")
+@FeignClient(name = "account-service", url = "${account-service.url}", configuration = FeignSslConfig.class)
 public interface AccountServiceClient {
     
     @PutMapping("/api/accounts/{accountNumber}/debit")
