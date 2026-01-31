@@ -47,4 +47,10 @@ public class AccountController {
         AccountDTO accountDTO = accountService.createAccount(createRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(accountDTO);
     }
+
+    @GetMapping
+    public ResponseEntity<java.util.List<AccountDTO>> getAllAccounts() {
+        java.util.List<AccountDTO> accounts = accountService.getAllAccounts();
+        return ResponseEntity.ok(accounts);
+    }
 }

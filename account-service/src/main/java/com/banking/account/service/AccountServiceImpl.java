@@ -80,6 +80,13 @@ public class AccountServiceImpl implements AccountService {
         return mapToDTO(savedAccount);
     }
 
+    @Override
+    public java.util.List<AccountDTO> getAllAccounts() {
+        return accountRepository.findAll().stream()
+                .map(this::mapToDTO)
+                .collect(java.util.stream.Collectors.toList());
+    }
+
     private AccountDTO mapToDTO(Account account) {
         return AccountDTO.builder()
                 .accountNumber(account.getAccountNumber())
